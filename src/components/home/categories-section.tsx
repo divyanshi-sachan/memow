@@ -1,174 +1,4 @@
-// 'use client'
-
-// import { useState, useEffect } from 'react'
-// import Image from 'next/image'
-// import { ShoppingCart, ChevronLeft, ChevronRight } from 'lucide-react'
-// import { Badge } from "@/components/ui/badge"
-// import { Button } from "@/components/ui/button"
-// import { Card, CardContent } from "@/components/ui/card"
-// import { useRouter } from 'next/navigation'
-
-// interface Product {
-//   id: string
-//   name: string
-//   description: string
-//   price: number
-//   image: string
-//   link: string
-// }
-
-// const productsByCategory: Record<string, Product[]> = {
-//   'Occasions': [
-//     {
-//       id: '1',
-//       name: 'Wedding',
-//       description: 'Because your big day deserves more than just ‘good enough’ shots.',
-//       price: 199.99,
-//       image: 'https://bangalorephotographers.in/blog/wp-content/uploads/2022/08/Wedding-Photography-e1661455773277.jpg',
-//       link: '/packages/occasions'
-//     },
-//     {
-//       id: '2',
-//       name: 'Maternity',
-//       description: 'For the moms who glow like a sunrise but want photos sharper than your morning coffee',
-//       price: 149.99,
-//       image: 'https://matrixstudio.in/cdn/images/album/maternity049.jpg',
-//       link: '/packages/occasions'
-//     },
-//     {
-//       id: '3',
-//       name: 'Baby Shower',
-//       description: 'Babies might be messy, but your baby shower photos don’t have to be',
-//       price: 399.99,
-//       image: 'https://media.greatbigphotographyworld.com/wp-content/uploads/2020/06/newborn-ideas-and-tips.jpg',
-//       link: '/packages/occasions'
-//     },
-//     {
-//       id: '4',
-//       name: 'Parties-Events',
-//       description: 'When the party’s wild, but your Insta feed is mild',
-//       price: 129.99,
-//       image: 'https://i1.adis.ws/i/canon/adobestock_173678266_4b5c9fe2848a40d68964c61a4d775304',
-//       link: '/packages/occasions'
-//     },
-//   ],
-//   'Business': [
-//     {
-//       id: '5',
-//       name: 'Brand Shoot',
-//       description: 'Let us make your brand the Beyoncé of your industry—flawless',
-//       price: 99.99,
-//       image: 'https://thebrandbee.com/assets/imgs/Brand-solution/Photoshoots-Video-Shoots/850X400.webp',
-//       link: '/packages/business'
-//     },
-//     {
-//       id: '6',
-//       name: 'Corporate Profile And Headshot',
-//       description: 'We’re here to make you look CEO-level sharp',
-//       price: 179.99,
-//       image: 'https://i.pinimg.com/736x/72/3a/af/723aaf860c79a2599f8c171edde215ec.jpg',
-//       link: '/packages/business'
-//     },
-//     {
-//       id: '7',
-//       name: 'Political Profile And Headshot',
-//       description: 'We make you look powerful—without the scandal',
-//       price: 49.99,
-//       image: 'https://images.squarespace-cdn.com/content/v1/5c4d7e227e3c3a6ec70a5ac7/1699872724564-E3QTF3JO8N15F5EMNM8D/David+Cameron+Rory+Lewis+Photographer.jpg?format=1000w',
-//       link: '/packages/business'
-//     },
-//     {
-//       id: '8',
-//       name: 'Portfolio',
-//       description: 'We’ll make sure your portfolio is giving main character energy',
-//       price: 39.99,
-//       image: 'https://portfoliofashion.com/wp-content/uploads/2024/01/Modeling-Portfolio-Photographer-Bangalore.jpg',
-//       link: '/packages/business'
-//     },
-//   ],
-// };
-
-// export default function ProductCatalog() {
-//   const router = useRouter();
-//   const categories = Object.keys(productsByCategory);
-//   const [currentCategory, setCurrentCategory] = useState(0);
-//   const [products, setProducts] = useState<Product[]>(productsByCategory[categories[currentCategory]]);
-//   const [favorites, setFavorites] = useState<Set<string>>(new Set())
-//   const [addedToCart, setAddedToCart] = useState<Set<string>>(new Set())
-
-//   useEffect(() => {
-//     setProducts(productsByCategory[categories[currentCategory]]);
-//   }, [currentCategory]);
-
-
-//   function toRoute(route : string){
-//     router.push(route)
-//   }
-
-//   return (
-//     <div className="container mx-auto px-4 py-20">
-//       <div className="text-center mb-12">
-//         <div className="flex justify-center mb-8">
-//           <div className="bg-[#6B46C1] text-white px-6 py-2 rounded-lg shadow-md">
-//             <span className="text-base font-black tracking-wide">HOT PACKAGES</span>
-//           </div>
-//         </div>
-//         <div className="flex justify-between items-center mb-4">
-//           <Button 
-//             onClick={() => setCurrentCategory((prev) => (prev - 1 + categories.length) % categories.length)}
-//             variant="outline"
-//             size="icon"
-//             className="rounded-full"
-//           >
-//             <ChevronLeft className="h-4 w-4" />
-//             <span className="sr-only">Previous category</span>
-//           </Button>
-//           <h2 className="text-3xl font-semibold">{categories[currentCategory]}</h2>
-//           <Button 
-//             onClick={() => setCurrentCategory((prev) => (prev + 1) % categories.length)}
-//             variant="outline"
-//             size="icon"
-//             className="rounded-full"
-//           >
-//             <ChevronRight className="h-4 w-4" />
-//             <span className="sr-only">Next category</span>
-//           </Button>
-//         </div>
-
-//         <p className="text-gray-600 max-w-2xl mx-auto">
-//           Explore cutting-edge gadgets designed to enhance your daily life and keep you connected.
-//         </p>
-//       </div>
-
-
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-//         {products.map((product) => (
-//           <Card key={product.id} className="overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105" onClick={()=>{toRoute(product.link)}}>
-//             <CardContent className="p-4">
-//               <div className="relative mb-4">
-//                 <Image
-//                   src={product.image}
-//                   alt={product.name}
-//                   width={500} 
-//                   height={500}
-//                   className="w-full h-48 object-cover rounded-md"
-//                 />
-//               </div>
-//               <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-//               <p className="text-sm text-gray-600 mb-4">{product.description}</p>
-//             </CardContent>
-//           </Card>
-//         ))}
-//       </div>
-//     </div>
-//   )
-// }
-
-
-
-
 'use client'
-
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { ShoppingCart, ChevronLeft, ChevronRight, Heart, ExternalLink } from 'lucide-react'
@@ -264,7 +94,7 @@ export default function ProductCatalog() {
   const [currentCategory, setCurrentCategory] = useState(0);
   const [products, setProducts] = useState<Product[]>(productsByCategory[categories[currentCategory]]);
   const [favorites, setFavorites] = useState<Set<string>>(new Set())
-  const [addedToCart, setAddedToCart] = useState<Set<string>>(new Set())
+  // const [addedToCart, setAddedToCart] = useState<Set<string>>(new Set())
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
 
   useEffect(() => {
@@ -285,21 +115,6 @@ export default function ProductCatalog() {
     }
     setFavorites(newFavorites);
   }
-
-  function addToCart(id: string, e: React.MouseEvent) {
-    e.stopPropagation();
-    const newCart = new Set(addedToCart);
-    newCart.add(id);
-    setAddedToCart(newCart);
-    
-    // Show temporary notification effect (in a real app, you'd use a toast notification)
-    setTimeout(() => {
-      const updatedCart = new Set(addedToCart);
-      updatedCart.delete(id);
-      setAddedToCart(updatedCart);
-    }, 2000);
-  }
-
   return (
     <div className="container mx-auto px-4 py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="text-center mb-16">
@@ -411,15 +226,6 @@ export default function ProductCatalog() {
                         onClick={(e) => toggleFavorite(product.id, e)}
                       >
                         <Heart className={`h-5 w-5 ${favorites.has(product.id) ? 'fill-current' : ''}`} />
-                      </Button>
-                      
-                      <Button 
-                        variant="outline" 
-                        size="icon" 
-                        className={`rounded-full border-0 ${addedToCart.has(product.id) ? 'bg-green-500 text-white' : 'bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-white'}`}
-                        onClick={(e) => addToCart(product.id, e)}
-                      >
-                        <ShoppingCart className="h-5 w-5" />
                       </Button>
                     </div>
                     
