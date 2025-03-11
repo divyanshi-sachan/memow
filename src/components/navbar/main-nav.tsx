@@ -244,7 +244,7 @@ export default function MainNav() {
               size="icon"
               className="relative dark:hover:bg-gray-700 dark:text-white"
             >
-              <Link href="/past-booking"><History className="h-6 w-6 stroke-[2px]" /></Link>
+              <Link href="/past-booking"><History className="h-8 w-8 stroke-[2.5px]" /></Link>
             </Button>
             <SignedOut>
             <Link href="/sign-in">
@@ -252,16 +252,10 @@ export default function MainNav() {
             </Link>
             </SignedOut>
             <SignedIn>
-            <button className="relative mr-2 ml-2 flex items-center justify-center h-6 w-6">
-  <UserButton 
-    appearance={{
-      elements: {
-        userButtonAvatarBox: "h-6 w-6 stroke-[2px]"
-      }
-    }}
-  />
-</button>
-</SignedIn>
+              <button className="relative mr-2 ml-2">
+                <UserButton />
+              </button>
+            </SignedIn>
           </div>
         </div>
       </header>

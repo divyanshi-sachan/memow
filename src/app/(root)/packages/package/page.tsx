@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
     <ProductPage />
-    <ReviewSection/>
+    <ReviewSection id="reviews"/>
     </>
   );
 }

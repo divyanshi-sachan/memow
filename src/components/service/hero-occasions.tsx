@@ -57,6 +57,12 @@ const exampleImages = [
     title: "A table topped with two wine glasses and plates",
   },
 ]
+const scrollToPackages = () => {
+  const packagesSection = document.getElementById('occasion-packages')
+  if (packagesSection) {
+    packagesSection.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 
 const Preview = () => {
   const [scope, animate] = useAnimate()
@@ -67,7 +73,7 @@ const Preview = () => {
 
   return (
     <div
-      className="w-full min-h-screen bg-white overflow-hidden mt-20" // Added mt-16 to push content below navbar
+      className="w-full h-auto bg-white overflow-hidden mt-20" // Added mt-16 to push content below navbar
       ref={scope}
     >
       <div className="flex w-full h-full min-h-[600px] justify-center items-center relative">
@@ -79,10 +85,12 @@ const Preview = () => {
           transition={{ duration: 0.88, delay: 1.5 }}
         >
           <p className="text-5xl md:text-7xl z-50 text-black font-calendas italic">
-            fancy.
+            Occasions
           </p>
-          <button className="text-xs z-50 hover:scale-110 transition-transform bg-black text-white rounded-full py-2 px-4 w-24 cursor-pointer">
-            Download
+          <button 
+          onClick={scrollToPackages}
+          className="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-0  font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 focus:outline-none focus:border-yellow-500">
+            Explore Packages
           </button>
         </motion.div>
 

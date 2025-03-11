@@ -30,7 +30,7 @@ export default function SearchBar() {
           size="icon"
           className="relative dark:hover:bg-gray-700 dark:text-white"
         >
-          <SearchIcon className="h-6 w-6 stroke-[2px]" ></SearchIcon>
+          <SearchIcon className="h-10 w-10 stroke-[2.5px]" />
           <span className="sr-only">Search</span>
         </Button>
       </SheetTrigger>

@@ -190,7 +190,7 @@ export default function CheckoutPage(user : CheckoutProps) {
           <div className="lg:col-span-2">
             <div className="space-y-6">
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold">Customer details</h2>
+                <h2 className="text-xl font-bold mt-20">Customer details</h2>
                 <div className="space-y-4">
                   <div>
                     <Label htmlFor="email">Email *</Label>

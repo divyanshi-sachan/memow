@@ -1,4 +1,6 @@
+
 import InteractiveBentoGallery from "@/components/blocks/interactive-bento-gallery"
+
 const mediaItems = [
   {
     id: 1,
@@ -60,7 +62,7 @@ const mediaItems = [
 
 export function BentoGridGalleryDemo() {
   return (
-    <div className="min-h-screen overflow-y-auto w-full mx-auto px-4">
+    <div className="min-h-screen overflow-y-auto w-full">
       <InteractiveBentoGallery
         mediaItems={mediaItems}
         title="Gallery Shots Collection"

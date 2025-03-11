@@ -157,4 +157,3 @@ export function removeKeysFromQuery({
 
   return `${window.location.pathname}?${qs.stringify(currentUrl)}`;
 }
-

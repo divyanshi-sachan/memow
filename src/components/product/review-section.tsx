@@ -1,5 +1,4 @@
 'use client'
-
 import { Star } from 'lucide-react'
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
@@ -66,16 +65,19 @@ function StarRating({ rating }: { rating: number }) {
   )
 }
 
-export default function ReviewSection() {
+interface ReviewSectionProps {
+  id: string;  // Accept the 'id' prop here
+}
+
+export default function ReviewSection({ id }: ReviewSectionProps) {  // Destructure 'id' from props
   return (
-    <div className="container mx-auto p-4 mt-8 mb-8">
+    <div id={id} className="container mx-auto p-4 mt-8 mb-8">  {/* Add 'id' to the container */}
       <h1 className="text-3xl font-bold mb-6">Customer Reviews</h1>
       <div className="grid grid-cols-1 lg:grid-cols-[325px_1fr] gap-6">
         <div className="lg:sticky lg:top-4 lg:self-start">
           <ReviewStats />
         </div>
         <div>
-          {/* <h2 className="text-2xl font-semibold mb-4">Customer Feedback</h2> */}
           <div className="space-y-4">
             {reviews.map((review) => (
               <Card key={review.id}>
@@ -98,7 +100,7 @@ export default function ReviewSection() {
                     </div>
                   </div>
                 </CardContent>
-               </Card>
+              </Card>
             ))}
           </div>
         </div>
@@ -106,4 +108,3 @@ export default function ReviewSection() {
     </div>
   )
 }
-

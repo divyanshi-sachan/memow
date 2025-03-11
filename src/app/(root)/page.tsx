@@ -31,8 +31,8 @@ export default function Home() {
       <Feature6 />
       <HeadSection />
       <BentoGridGalleryDemo />
-      <AnimatedTestimonialsDemo />
-      <Faq3Demo />
+      {/* <AnimatedTestimonialsDemo /> */}
+      <Faq3Demo /> 
     </main>
   );
 }
